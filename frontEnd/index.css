@@ -1,0 +1,22 @@
+fieldset{
+    background-color: cornflowerblue;
+    width: auto;
+}
+legend{
+    border: 0.1rem;
+    box-sizing: border-box;
+    border-style: solid;
+    border-radius: 2rem;
+    background-color: darkblue;
+    color: darkseagreen;
+    padding: 0.3rem;
+    font-weight: bold;
+}
+.label{
+    box-sizing: border-box;
+    border-color: dimgray;
+    border-width: thin;
+    width: 180px;
+    
+    
+}
