@@ -15,12 +15,16 @@
         <fieldset>
             <label for="howManyProducts">How many products?</label>
             <input type="number" name="howManyProducts" id= "howManyProducts"><br><br>
-            <div id= "agregarProductos"></div><br>
+            <div id= "addProducts"></div><br>
         </fieldset><br>
         <label for="amount">Amount</label>
         <input type="number" name="amount" id= "amount">
         <label for="paymentMethod">PaymentMethod</label>
-        <input type="text" name="paymentMethod" id= "paymentMethod">
+        <select name="paymentMethod" id="paymentMethod">
+            <option value="Credit Card">Credit Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Bitcoin">Bitcoin</option>
+        </select><br><br>
         <input type="submit" name="submit">
      </fieldset>   
  </form>   

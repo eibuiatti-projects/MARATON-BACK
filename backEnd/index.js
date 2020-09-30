@@ -113,7 +113,7 @@ app.get("/compras/:id", function (req, res) {
 }); 
 
 
-app.post("/compras/", function (req, res) {
+app.post("/compras", function (req, res) {
   if(req.body.id || !req.body.clientId || !req.body.products || !req.body.amount || !req.body.paymentMethod){
     res.status(404).send({"error":"peticion erronea"});
   }else{
