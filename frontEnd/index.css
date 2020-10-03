@@ -1,7 +1,6 @@
 fieldset{
     background-color: cornflowerblue;
-    width: auto;
-    
+    width: 500px;
 }
 legend{
     border: 0.1rem;
