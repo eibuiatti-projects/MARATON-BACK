@@ -47,8 +47,8 @@ el trabajo de un compañero/a, trabajen desde la empatía, para lograr una evalu
 const express = require("express");
 const cors = require("cors");
 const moment = require("moment")
-//const morgan = require("morgan");
-/////const uniqid = require("uniqid");
+const morgan = require("morgan");
+const uniqid = require("uniqid");
 
 const app = express();
 const PORT = 3001;
@@ -56,7 +56,7 @@ const PORT = 3001;
 //////////////////// Aplico Middlewares
 app.use(express.json());
 app.use(cors());
-//app.use(morgan("combined"));
+app.use(morgan("combined"));
 
 ///////////////////// Init Array de Compras. (Simulo una Base de datos)
 const compras = [
@@ -99,7 +99,8 @@ const compras = [
 app.get("/compras", function (req, res) {
   res.status(200).send({ compras });
 });
-
+/*
+// Alternativa para el metodo GETbyId
 app.get("/compras/:id", function (req, res) {
   const id = req.params.id;
   let compraEncontrada = undefined;
@@ -111,14 +112,20 @@ app.get("/compras/:id", function (req, res) {
   });
   (compraEncontrada !== undefined)? res.status(200).send({"compra":compraEncontrada}) : res.status(404).send({"error":"compra no encontrada"});
 }); 
+*/
 
+app.get("/compras/:id", function (req, res) {
+  const id = req.params.id;
+  let compraEncontrada = compras.filter(compra => compra.id == id);
+  (compraEncontrada.length !== 0)? res.status(200).send({"compra":compraEncontrada}) : res.status(404).send({"error":"compra no encontrada"});
+}); 
 
 app.post("/compras", function (req, res) {
   if(req.body.id || !req.body.clientId || !req.body.products || !req.body.amount || !req.body.paymentMethod){
     res.status(404).send({"error":"peticion erronea"});
   }else{
     let nuevaCompra = {
-      id: getNextId(),
+      id: uniqid(),
       clientId: req.body.clientId,
       products: req.body.products,
       amount: req.body.amount,
@@ -128,7 +135,6 @@ app.post("/compras", function (req, res) {
     compras.push(nuevaCompra);
     res.status(200).send({"nuevaCompra":nuevaCompra})
   }
-
 });
 
 app.put("/compras/:id", function (req, res) {
@@ -136,7 +142,6 @@ app.put("/compras/:id", function (req, res) {
     res.status(404).send({"error":"peticion erronea"});
   }else{
     const id = req.params.id;
-    //console.log("id: ", id);
     let indice;
     compras.forEach(function (compra,index) {
       if (index == id){
@@ -144,7 +149,6 @@ app.put("/compras/:id", function (req, res) {
         return;
       }  
     });
-    //console.log("indice: ", indice)
     if (indice){
       let nuevaCompra = {
         id: id,
@@ -158,16 +162,11 @@ app.put("/compras/:id", function (req, res) {
     }else{
       res.status(404).send({"error":"id erroneo"});
     }
-    
   }
-
 });
-
-
 
 app.delete("/compras/:id", function (req, res) {
   const id = req.params.id;
-  //console.log("id: ", id);
   let indice;
   compras.forEach(function (compra,index) {
     if (index == id){
@@ -175,7 +174,6 @@ app.delete("/compras/:id", function (req, res) {
       return;
     }  
   });
-  //console.log("indice: ", indice)
   if (indice){
     idCompraEliminada = compras[indice].id;
     compras.splice(indice, 1);
@@ -183,13 +181,15 @@ app.delete("/compras/:id", function (req, res) {
   }else{
     res.status(404).send({"error":"id erroneo"});
   }
-
 });
 
+/* 
+// En vez de utilizar uniqid podría utilizar esta funcion 
 function getNextId(){
   let compraIdMax = compras.reduce((acc, compra)=> (acc.id>compra.id)? acc.id : compra.id);
   return parseInt(compraIdMax) + 1;
 }
+*/
 
 //////////////////// Ahora que tengo todo definido y creado, levanto el servicio escuchando peticiones en el puerto
 app.listen(PORT, function () {

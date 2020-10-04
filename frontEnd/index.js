@@ -13,7 +13,7 @@ form.addEventListener("submit", formHandler);
 function howManyProductsHandler(){
     let showProducts="";
     for (let i=1; i<=howManyProducts.value; i++){
-      showProducts += `<br><label for="producto${i}">Producto ${i} </label><input type="number" name="producto${i}" id="producto${i}"><br><br>`;
+      showProducts += `<br><label for="producto${i}">Producto ${i} </label><input type="text" name="producto${i}" id="producto${i}"><br><br>`;
     }
     addProducts.innerHTML = showProducts;
 }
