@@ -12,4 +12,4 @@
 
     Se necesitan las siguientes dependencias: express, cors, moment, morgan, uniqid.
     
-    El puerto de escucha esta configurado para: http://localhost:4200/
+    El puerto de escucha esta configurado para: http://localhost:3001/
