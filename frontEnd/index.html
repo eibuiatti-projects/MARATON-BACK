@@ -10,21 +10,25 @@
  <form action="">
      <fieldset>
         <legend>Payment Form</legend>
-        <label class= "label" for="clientId">Client Id</label>
-        <input type="text" name="clientId" id= "clientId"><br><br>
         <fieldset>
-            <label for="howManyProducts">How many products?</label>
+            <label class= "label" for="clientId">Client Id</label>
+            <input type="text" name="clientId" id= "clientId"><br><br>
+        </fieldset>
+        <fieldset>
+            <label class= "label" for="howManyProducts">How many products?</label>
             <input type="number" name="howManyProducts" id= "howManyProducts"><br><br>
             <div id= "addProducts"></div><br>
-        </fieldset><br>
-        <label for="amount">Amount</label>
-        <input type="number" name="amount" id= "amount">
-        <label for="paymentMethod">Payment Method</label>
-        <select name="paymentMethod" id="paymentMethod">
-            <option value="Credit Card">Credit Card</option>
-            <option value="Cash">Cash</option>
-            <option value="Bitcoin">Bitcoin</option>
-        </select><br><br>
+        </fieldset>
+        <fieldset>
+            <label class= "label" for="amount">Amount</label>
+            <input type="number" name="amount" id= "amount">
+            <label class= "label" for="paymentMethod">Payment Method</label>
+            <select name="paymentMethod" id="paymentMethod">
+                <option value="Credit Card">Credit Card</option>
+                <option value="Cash">Cash</option>
+                <option value="Bitcoin">Bitcoin</option>
+            </select>
+        </fieldset><br><br>
         <input type="submit" name="submit" value="Submit"><br><br>
         <span id = "message"></span>
      </fieldset>   

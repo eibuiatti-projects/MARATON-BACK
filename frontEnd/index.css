@@ -13,12 +13,8 @@ legend{
     font-weight: bold;
 }
 .label{
-    box-sizing: border-box;
-    border-color: dimgray;
-    border-width: thin;
+    
     width: 180px;
-    
-    
 }
 
 span {
