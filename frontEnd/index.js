@@ -6,6 +6,7 @@ const amount= document.querySelector("#amount");
 const paymentMethod= document.querySelector("#paymentMethod");
 const addProducts= document.querySelector("#addProducts")
 const form = document.querySelector("form");
+const message = document.querySelector("#message")
 
 howManyProducts.addEventListener("blur", howManyProductsHandler); 
 form.addEventListener("submit", formHandler);
@@ -39,7 +40,13 @@ function formHandler(e){
     return res.json()
 }).then((res)=>{
     console.log("Compra Agregada",res)
-    
+    message.innerText = "Datos enviados correctamente";
+    clientId.value = "";
+    for (let i=1; i<=howManyProducts.value; i++){
+      document.querySelector (`#producto${i}`).value = "";
+    } 
+    howManyProducts.value = ""; 
+    amount.value = "";    
 })
 
 }
