@@ -1,4 +1,5 @@
 # MARATON-BACK
+    Ejercicio realizado durante la formacion Guayerd-FullStack
 
 ## Backend E-commerce (Operaciones CRUD - Create/Read/Update/Delete -)
   
